@@ -1,0 +1,92 @@
+{%extends 'layout/base_nv.html'%}
+
+{%block title%}Tiếp nhận học sinh{%endblock%}
+
+{%block content%}
+<section>
+    <h1>HỌC SINH</h1>
+    <div>
+        <ul class="nav nav-underline">
+            <li class="nav-item">
+                <a class="nav-link active" href="/tiepnhanhocsinh">Tiếp nhận học sinh </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/danhsachhocsinh">Danh sách học sinh</a>
+            </li>
+        </ul>
+    </div>
+</section>
+{%if err_msg%}
+<div class="alert alert-danger">{{err_msg}}</div>
+{%endif%}
+{%if success_msg%}
+<div class="alert alert-success">{{success_msg}}</div>
+{%endif%}
+<section>
+    <div class="container form-container mt-4">
+        <div class="text-center pt-2">
+            <h1>HỒ SƠ HỌC SINH</h1>
+        </div>
+        <div class="profile-container">
+            <form method="post" action="/tiepnhanhocsinh" enctype="multipart/form-data">
+                <div class="profile-content">
+                    <div class="form-group row">
+                        <div class="col-6">
+                            <label for="f_name" class="form-label">Họ:</label>
+                            <input type="text" class="form-control" id="f_name" placeholder="Nhập họ " name="f_name"
+                                   required>
+                        </div>
+                        <div class="col-6">
+                            <label for="l_name" class="form-label">Tên:</label>
+                            <input type="text" class="form-control" id="l_name" placeholder="Nhập tên" name="l_name"
+                                   required>
+                        </div>
+                        <div>
+                            <h6> *Ví dụ Nguyễn Văn A thì Họ: Nguyễn Văn, Tên: A </h6>
+                        </div>
+                    </div>
+                    <div class="form-group ">
+                        <label for="brthd" class="form-label">Ngày sinh:</label>
+                        <input type="date" class="form-control" id="brthd" placeholder="DD/MM/YYYY"
+                               name="brthd" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="gender" class="form-label">Giới tính:</label>
+                        <select id="gender" class="form-select" name="gender">
+                            <option value="Nam" selected>Nam</option>
+                            <option value="Nữ">Nữ</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="address" class="form-label">Địa chỉ:</label>
+                        <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ"
+                               name="address" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email:</label>
+                        <input type="email" class="form-control" id="email" placeholder="Nhập email" name="email">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone" class="form-label">Số điện thoại:</label>
+                        <input type="number" class="form-control" id="phone" placeholder="Nhập số điện thoại"
+                               name="phone" pattern="[0-9]*">
+                    </div>
+                    <div class="d-flex ">
+                        <button class="btn-custom ms-auto" type="submit"> Lưu thông tin</button>
+                    </div>
+                </div>
+                <div class="card profile-image">
+                    <label for="avatar" class="upload">
+                        <input type="file" id="avatar" name="avatar">
+                        <i class="bi bi-plus-circle-dotted"></i>
+                    </label>
+                    <img class="img"
+                         src="https://res.cloudinary.com/dz03d8gcs/image/upload/v1733493095/18148_l8fyrd.png"
+                         width="180" height="160">
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+{%endblock%}

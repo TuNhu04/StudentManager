@@ -1,0 +1,69 @@
+{%extends 'layout/base_nv.html'%}
+{%block title%}Thêm học sinh{%endblock%}
+
+{%block content%}
+<section class="p-2">
+    <h1>LỚP</h1>
+    <div>
+        <ul class="nav nav-underline ">
+            <li class="nav-item">
+                <a class="nav-link " href="/lop">Danh sách các lớp</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/dieuchinhlop/{{class_id}}">Điều chỉnh lớp</a>
+            </li>
+        </ul>
+    </div>
+</section>
+<section class="p-2">
+    <div class="d-flex flex-row justify-content-between align-items-center mb-3">
+        <div>
+            <a href="/dieuchinhlop/{{class_id}}" class="me-3"><i class="bi bi-arrow-left"></i></a>
+        </div>
+        <div class="me-auto"><h1>Danh sách học sinh chưa có lớp </h1></div>
+    </div>
+    {%if not students%}
+    <h5>Danh sách trống</h5>
+    {%endif%}
+    <div class="container">
+        <table class="table table-striped table-hover" cellpadding="8">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>Ảnh</th>
+                <th>Họ</th>
+                <th>Tên</th>
+                <th>Ngày sinh</th>
+                <th>Giới tính</th>
+                <th>Liên lạc</th>
+                <th>Địa chỉ</th>
+                <th>Chức năng</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                {%for s in students%}
+                <td>{{s.stt}}</td>
+                <td><img src="{{s.avatar}}" width="40"
+                         height="40"></td>
+                <td>{{s.first_name}}</td>
+                <td>{{s.last_name}}</td>
+                <td>{{s.date_of_birth}}</td>
+                <td>{{s.gender}}</td>
+                <td>
+                    <a><i class="bi bi-telephone me-2"></i></a>
+                    <a><i class="bi bi-envelope-at"></i></a>
+                </td>
+                <td>{{s.address}}</td>
+                <td class="text-center">
+                    <button class="btn btn-success" onclick="addStudent({{s.id}},'{{class_id}}')">
+                        <i class="bi bi-plus-square"></i>
+                    </button>
+                </td>
+            </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</section>
+{%endblock%}

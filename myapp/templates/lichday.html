@@ -1,0 +1,81 @@
+{%extends 'layout/base_nv.html'%}
+{%block title%}Phân công giáo viên{%endblock%}
+
+
+{%block content%}
+<section class="p-2">
+    <h1>LỚP</h1>
+    <div>
+        <ul class="nav nav-underline ">
+            <li class="nav-item">
+                <a class="nav-link " href="/lop">Danh sách các lớp </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/chitietmon/{{cls.id}}">Phân công giáo viên</a>
+            </li>
+        </ul>
+    </div>
+</section>
+{%if not filtered_subjects%}
+<h5>Lớp đã sắp xếp lịch</h5>
+{%endif%}
+<section class="p-2">
+    <div class="me-3"><h1 class="m-0">Danh sách môn học chưa phân công giáo viên của lớp {{cls.name}} </h1></div>
+    <form action="/chitietmon/{{cls.id}}" method="get" >
+        <div class="d-flex flex-row mb-3">
+            <div class="d-inline-flex p-2">
+                <label for="subject_id" class="form-label">ID môn học:</label>
+                <input {%if subject_id%} value="{{subject_id}}" {%endif%} type="text" class="form-control"
+                       id="subject_id" placeholder="Chọn môn học bên dưới "
+                       name="subject_id">
+            </div>
+            <div class="d-inline-flex p-2">
+                <label for="teacher_id" class="form-label">ID giảng viên:</label>
+                <input type="text" class="form-control" id="teacher_id" placeholder="Nhập mã giáo viên "
+                       name="teacher_id">
+            </div>
+            <div class="p-2">
+                <button style="submit" class="btn btn-custom">Lưu</button>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="container col-6">
+            <table class="table table-striped table-hover" cellpadding="8">
+                <thead>
+                <tr>
+                    <th>Mã môn học</th>
+                    <th>Tên môn học</th>
+                </tr>
+                </thead>
+                <tbody>
+                {%for s in filtered_subjects%}
+                <tr onclick="selectRow({{s.id}},{{cls.id}})">
+                    <td>{{s.id}}</td>
+                    <td>{{s.name}}</td>
+                </tr>
+                {%endfor%}
+                </tbody>
+            </table>
+        </div>
+        <div class="container col-6">
+            <table class="table table-striped table-hover" cellpadding="8">
+                <thead>
+                <tr>
+                    <th>Mã giáo viên</th>
+                    <th>Tên giáo viên</th>
+                </tr>
+                </thead>
+                <tbody>
+                {%for t in teachers%}
+                <tr>
+                    <td>{{t.id}}</td>
+                    <td>{{t.name}}</td>
+                </tr>
+                {%endfor%}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{%endblock%}

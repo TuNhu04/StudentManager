@@ -1,0 +1,41 @@
+{%extends 'layout/base_gv.html'%}
+{%block title%}Tổng quan{%endblock%}
+
+{%block content%}
+<div class="text-left">
+    <h1>TỔNG QUAN</h1>
+</div>
+<section>
+    <div class="m-4"><h1>Năm học {{year}} - Học kì {{semester}}</h1></div>
+    <div class=" d-flex flex-row justify-content-center align-items-center m-5">
+        <div class="db-item">
+            <i class="item-icon bi bi-people-fill"></i>
+            <div class="item-info">Học sinh</div>
+            <div class="item-value">{{count_student}}</div>
+        </div>
+        <div class="db-item">
+            <i class="item-icon bi bi-people-fill"></i>
+            <div class="item-info">Giáo viên</div>
+            <div class="item-value">{{count_teacher}}</div>
+        </div>
+    </div>
+    <div class=" d-flex flex-row justify-content-center align-items-center m-5">
+        <div class="db-item">
+            <i class=" item-icon bi bi-house-heart-fill"></i>
+            <div class="item-info">Lớp 10</div>
+            <div class="item-value">{{count_grade10}}</div>
+        </div>
+        <div class="db-item">
+            <i class="item-icon bi bi-house-heart-fill"></i>
+            <div class="item-info">Lớp 11</div>
+            <div class="item-value">{{count_grade11}}</div>
+        </div>
+        <div class="db-item">
+            <i class="item-icon bi bi-house-heart-fill"></i>
+            <div class="item-info">Lớp 12</div>
+            <div class="item-value">{{count_grade12}}</div>
+        </div>
+    </div>
+</section>
+
+{%endblock%}

@@ -1,0 +1,63 @@
+{%extends 'layout/base_gv.html'%}
+{%block title%}Nhập điểm{%endblock%}
+{%block content%}
+<section class="p-2">
+    <h1>Điểm</h1>
+    <div>
+        <ul class="nav nav-underline ">
+            <li class="nav-item">
+                <a class="nav-link active" href="/diem"> Nhập điểm </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="/xuatdiem">Xuất điểm</a>
+            </li>
+        </ul>
+    </div>
+</section>
+<section class="p-2">
+    <div class="d-flex flex-row justify-content-between align-items-center mb-3">
+        <div class="me-3"><h1 class="m-0">Danh sách lớp của bạn</h1></div>
+        <div class="me-auto">
+            <select class="custom-select" name="select" onchange="selectSubject(this)">
+                <option value="" selected >Chọn môn học</option>
+                {% for s in subjects %}
+                <option value="{{ s.id }}" {%if s.id == subject_id|int %} selected {% endif %}>
+                    {{ s.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+    {%if not classes%}
+    <h5>Hãy chọn môn học</h5>
+    {%endif%}
+    <div class="container">
+        <table class="table table-striped table-hover" cellpadding="8">
+            <thead>
+            <tr>
+                <th>Mã lớp</th>
+                <th>Tên lớp</th>
+                <th>Khối</th>
+                <th>Sĩ số</th>
+                <th>Nhập điểm</th>
+            </tr>
+            </thead>
+            <tbody>
+            {%for c in classes%}
+            <tr>
+                <td>{{c.id}}</td>
+                <td>{{c.name}}</td>
+                <td>{{c.grade}}</td>
+                <td>{{c.total_student}}</td>
+                <td>
+                    <a href="/nhapdiem/{{subject_id}}?class_id={{c.id}}">
+                        <button class="btn btn-success"><i class="bi bi-hammer"></i></button>
+                    </a>
+                </td>
+            </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+    </div>
+</section>
+{%endblock%}

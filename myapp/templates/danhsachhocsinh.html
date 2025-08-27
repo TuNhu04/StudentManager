@@ -1,0 +1,82 @@
+{%extends 'layout/base_nv.html'%}
+{%block title%}Danh sách học sinh{%endblock%}
+
+{%block content%}
+<section>
+    <h1>HỌC SINH</h1>
+    <div>
+        <ul class="nav nav-underline">
+            <li class="nav-item">
+                <a class="nav-link" href="/tiepnhanhocsinh">Tiếp nhận học sinh </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/danhsachhocsinh">Danh sách học sinh</a>
+            </li>
+        </ul>
+    </div>
+</section>
+<section class="p-2">
+    <div class="d-flex justify-content-between align-items-center mb-2 ">
+        <div class="me-auto">
+            <h1 class="m-0">Danh sách học sinh </h1>
+        </div>
+        <form class="d-flex">
+            <div class="search">
+                <input type="text" name="search" class="searchText" placeholder="Nhập học sinh...">
+            </div>
+            <div>
+                <button type="submit" class="searchButton">
+                    <i class="bi bi-search"></i>
+                </button>
+            </div>
+        </form>
+    </div>
+    <div class="container">
+        <table class="table table-striped table-hover" cellpadding="8">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>Ảnh</th>
+                <th>Họ</th>
+                <th>Tên</th>
+                <th>Ngày sinh</th>
+                <th>Giới tính</th>
+                <th>Địa chỉ</th>
+                <th>Liên lạc</th>
+                <th>Lớp</th>
+            </tr>
+            </thead>
+            <tbody>
+            {%for s in students%}
+            <tr>
+                <td>{{s.stt}}</td>
+                <td><img src="{{s.avatar}}" width="40"
+                         height="40"></td>
+                <td>{{s.first_name}}</td>
+                <td>{{s.last_name}}</td>
+                <td>{{s.date_of_birth}}</td>
+                <td>{{s.gender}}</td>
+                <td>{{s.address}}</td>
+                <td>
+                    <a data-bs-toggle="tooltip" data-bs-title="Số điện thoại: {{s.phone}}"><i class="bi bi-telephone me-2"></i></a>
+                    <a data-bs-toggle="tooltip" data-bs-title="Email: {{s.email}}"><i class="bi bi-envelope-at"></i></a>
+                </td>
+                <td>{{s.name_class}}</td>
+            </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+        <nav>
+            {%if pages>1%}
+            <ul class="pagination custom-pagination justify-content-end">
+                {%for i in range(1, pages+1)%}
+                <li class="page-item">
+                    <a class="page-link" href="/danhsachhocsinh/?page={{i}}">{{i}}</a>
+                </li>
+                {%endfor%}
+            </ul>
+            {%endif%}
+        </nav>
+    </div>
+</section>
+{%endblock%}

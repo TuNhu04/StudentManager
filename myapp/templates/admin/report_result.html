@@ -1,0 +1,60 @@
+{% extends 'admin/base.html' %}
+{% block body %}
+<h1>BÁO CÁO TỔNG KẾT MÔN HỌC</h1>
+
+<p><strong>Môn:</strong> {{ subject.name }}</p>
+<p><strong>Học kỳ:</strong> {{ semester.name }}</p>
+<p><strong>Năm học:</strong> {{ academic_year.name }}</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>STT</th>
+            <th>Lớp</th>
+            <th>Sĩ số</th>
+            <th>Số lượng đạt</th>
+            <th>Tỷ lệ</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for idx, data in report_data %}
+        <tr>
+            <td>{{ idx + 1 }}</td>
+            <td>{{ data.class_name }}</td>
+            <td>{{ data.total_students }}</td>
+            <td>{{ data.students_passed }}</td>
+            <td>{{ data.pass_rate }}%</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<!-- Biểu đồ Chart.js -->
+<canvas id="passRateChart" width="400" height="200"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    var ctx = document.getElementById('passRateChart').getContext('2d');
+    var passRateChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: {{ labels | safe }},
+            datasets: [{
+                label: 'Tỷ lệ đạt (%)',
+                data: {{ pass_rates | safe }},
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+{% endblock %}

@@ -1,0 +1,101 @@
+{%extends 'layout/base_gv.html'%}
+{%block title%}Bảng điểm{%endblock%}
+
+{%block content%}
+<section class="p-2">
+    <h1>Điểm</h1>
+    <div>
+        <ul class="nav nav-underline ">
+            <li class="nav-item">
+                <a class="nav-link " href="/diem"> Nhập điểm </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="/nhapdiem/{{subject.id}}?class_id={{cls.id}}"> Bảng điểm </a>
+            </li>
+        </ul>
+    </div>
+</section>
+<section class="p-2">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div>
+            <a href="/diem/?subject={{subject.id}}" class="me-3"><i class="bi bi-arrow-left"></i></a>
+        </div>
+        <div class="me-3"><h1 class="m-0">Bảng điểm môn {{subject.name}} lớp {{cls.name}} </h1></div>
+        <div class="search">
+            <input type="text" class="searchText" id="searchText" placeholder="Nhập học sinh...">
+        </div>
+        <div>
+            <button type="button" class="searchButton"><i class="bi bi-search" onclick="clickSearch({{subject.id}},{{cls.id}})"></i></button>
+        </div>
+        <div class="ms-auto">
+            <button type="button" class="btn-custom" id="add15p" onclick="addColumn({{transcript.id}},{{1}})">Thêm cột 15P</button>
+        </div>
+        <div>
+            <button type="button" class="btn-custom" id="add1t" onclick="addColumn({{transcript.id}},{{2}})">Thêm cột 1T</button>
+        </div>
+    </div>
+    <div class="container">
+        <table id="scoreTable" class="table table-striped table-hover" cellpadding="8">
+            <thead>
+            <tr>
+                <th>STT</th>
+                <th>Họ</th>
+                <th>Tên</th>
+                {%for c in range(transcript.number15Col)%}
+                <th>Điểm 15 phút</th>
+                {%endfor%}
+                {%for c in range(transcript.number1Col)%}
+                <th>Điểm 1 tiết</th>
+                {%endfor%}
+                <th>Điểm thi</th>
+            </tr>
+            </thead>
+            <tbody>
+            {%for s in students%}
+            <tr data-student-id="{{s.id}}">
+                <td>{{s.stt}}</td>
+                <td>{{s.first_name}}</td>
+                <td>{{s.last_name}}</td>
+                {% for c in range(transcript.number15Col) %}
+                <td contenteditable="true" class="diem-15-phut" data-lan="{{c+1}}" onblur="validateInput(this)">
+                    {% if scores %}
+                        {% if s.id in scores and 'diem_15_phut' in scores[s.id] %}
+                            {% for diem in scores[s.id]['diem_15_phut'] %}
+                                {% if diem.lan == c+1 and diem.value is not none %}
+                                    {{ diem.value }}
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
+                    {% endif %}
+                </td>
+                {%endfor%}
+                {% for c in range(transcript.number1Col) %}
+                    <td contenteditable="true" class="diem-1-tiet" data-lan="{{ c + 1 }}" onblur="validateInput(this)">
+                        {% if scores %}
+                            {% if s.id in scores and 'diem_1_tiet' in scores[s.id] %}
+                                {% for diem in scores[s.id]['diem_1_tiet'] %}
+                                    {% if diem.lan == c+1 and diem.value is not none %}
+                                        {{ diem.value }}
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        {% endif %}
+                    </td>
+                {% endfor %}
+                    <td contenteditable="true" class="diem-thi editable" onblur="validateInput(this)">
+                        {% if scores %}
+                            {% if s.id in scores and scores[s.id].get('diem_thi') %}
+                                {{ scores[s.id]['diem_thi'] }}
+                            {% endif %}
+                        {% endif %}
+                    </td>
+            </tr>
+            {%endfor%}
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <button type="button" class="btn-custom" onclick="saveScore({{transcript.id}})">Lưu điểm</button>
+    </div>
+</section>
+{%endblock%}

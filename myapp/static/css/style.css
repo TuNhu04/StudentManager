@@ -1,0 +1,353 @@
+
+::after,
+::before {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+li {
+    list-style: none;
+}
+
+h1 {
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+h2 {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+h5 {
+    font-weight: border;
+    font-size: 1.2rem;
+    background-color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+
+h6 {
+    font-weight: 500;
+    font-size: 0.9rem;
+    font-style: italic;
+    margin-top: 10px;
+    color: #ccc;
+}
+
+body {
+    font-family:  sans-serif;
+}
+
+.btn-custom{
+      display: inline-block;
+      padding: 8px;
+      margin: 5px;
+      border: 1px solid #555050;
+      border-radius: 7px;
+      background-color: #152259;
+      color: #FFF;
+      font-weight: bold;
+      font-size: 0.9rem
+}
+.custom-select {
+    width: 160px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    }
+        .custom-select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+            outline: none;
+        }
+
+
+.wrapper {
+    display: flex;
+}
+
+.main {
+    min-height: 100vh;
+    width: 100%;
+    overflow: hidden;
+    transition: all 0.35s ease-in-out;
+    background-color:#DAE4E6;
+}
+
+#sidebar {
+    width: 260px;
+    min-width: 260px;
+    z-index: 1000;
+    transition: all .25s ease-in-out;
+    background-color: #152259;
+    display: flex;
+    flex-direction: column;
+}
+
+#sidebar.hidden {
+    width: 70px;
+    min-width: 70px;
+}
+
+.toggle-btn {
+    background-color: transparent;
+    cursor: pointer;
+    border: 0;
+    padding: 1rem 1.5rem;
+}
+
+.toggle-btn i {
+    font-size: 1.5rem;
+    color: #FFF;
+}
+
+.sidebar-logo {
+    margin: auto 0;
+}
+
+.sidebar-logo {
+    color: #FFF;
+    font-size: 1.15rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.sidebar-nav {
+    padding: 2rem 0;
+    flex: 1 1 auto;
+}
+
+a.sidebar-link {
+    padding: .625rem 1.625rem;
+    color: #FFF;
+    display: block;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    border-left: 3px solid transparent;
+}
+
+.sidebar-link i {
+    font-size: 1.1rem;
+    margin-right: .75rem;
+}
+
+a.sidebar-link:hover {
+    background-color: rgba(255, 255, 255, .075);
+    border-left: 3px solid #3b7ddd;
+}
+
+.sidebar-item {
+    position: relative;
+}
+
+#sidebar.hidden .sidebar-logo,
+#sidebar.hidden a.sidebar-link span {
+    display: none;
+}
+
+ .nav-underline {
+      display: flex;
+      gap: 0.5rem; /*khoảng cách giua 2 nav*/
+      list-style: none; /*Xóa dấu gạch đầu list*/
+    }
+
+    .nav-underline li {
+      display: inline; /*trên 1 dòng*/
+    }
+
+    .nav-underline a {
+      font-weight: bold;
+      text-decoration: none;
+      color: #000000;
+      font-size: 16px;
+    }
+
+    .nav-underline a.active {
+      font-weight: bold;
+      color: #152259;
+      position: relative;
+    }
+
+    .nav-underline a.active::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #152259 ;
+    }
+
+.form-container{
+  background-color: #ffffff;
+  border-radius: 10px;
+  margin: auto;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px; /* Đặt chiều rộng tối đa cho form */
+}
+
+.form-container input, .form-container select, {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1px solid #555050;
+      border-radius: 10px;
+}
+table{
+    margin: auto;
+    font-size: 0.9rem;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: left;
+    background-color: #ffffff
+}
+thead{
+    background-color: #152259;
+    color: #ffffff;
+    font-weight: bold;
+    vertical-align: top; /* Căn chữ trong ô lên trên cùng */
+}
+tr{
+    border-bottom: 1.5px solid #DDDDDD;
+    vertical-align: top; /* Căn chữ trong ô lên trên cùng */
+}
+tr:last-of-type{
+    border-bottom: 3px solid #152259;
+}
+.custom-pagination .page-link {
+  margin: 5px;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
+  display: flex;              /* Dùng flexbox để căn giữa nội dung */
+  align-items: center;        /* Căn giữa theo chiều dọc */
+  justify-content: center;    /* Căn giữa theo chiều ngang */
+  border: 1px solid #ddd;
+  background-color: #152259;
+  color: #ffffff;
+  font-weight: bold;
+}
+.custom-pagination .page-item:first-child .page-link,
+.custom-pagination .page-item:last-child .page-link {
+    background-color: transparent;
+    color: #000000;
+}
+
+.select-class {
+    width: 100%;
+    height: 35px;
+    border: 1px solid #152259;
+    border-radius: 5px ;
+
+}
+
+.searchText {
+  width: 100%;
+  border: 3px solid #152259;
+  border-right: none;
+  padding: 5px;
+  height: 35px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #000000;
+}
+
+.searchButton {
+  width: 35px;
+  height: 35px;
+  border: 1px solid #152259;
+  background: #152259;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.profile-container form{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
+}
+.profile-container form .profile-image{
+    width: 180px;
+    height: 200px;
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 20px;
+}
+
+.profile-container form .profile-content{
+    flex-basis: 68%;
+    border-right: 5px ;
+    padding-right: 20px;
+}
+
+.profile-image .upload {
+    position: absolute;
+    bottom: 0;
+    width: 180px;
+    height: 50px;
+    background: #D9D9D9;
+    display:none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.upload i{
+    color: #ffffff;
+    font-size: 35px;
+}
+.profile-image:hover .upload{
+    display:flex;
+}
+.profile-image .upload input{
+    display: none;
+}
+.form-group {
+    font-weight: bold;
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+/*dashboard*/
+.db-item {
+     background-color: #fff;
+     border-radius: 30px;
+     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+     padding: 20px;
+     margin: 0 50px 0 50px;
+     text-align: center;
+     width: 180px;
+}
+.db-item .item-icon {
+     font-size: 30px;
+     color: #152259;
+     margin-bottom: 10px;
+}
+.db-item .item-info {
+     font-size: 16px;
+     color: #333;
+     margin-bottom: 5px;
+}
+.db-item .item-value {
+     font-size: 24px;
+     font-weight: bold;
+     color: #555;
+}

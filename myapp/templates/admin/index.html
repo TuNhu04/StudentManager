@@ -1,0 +1,95 @@
+{% extends 'admin/base.html' %}
+
+{% block body %}
+
+{% if current_user.is_authenticated %}
+<h1 class="text-center mb-4">THÔNG TIN TỔNG QUAN</h1>
+<div class="row">
+    <!-- Học sinh -->
+    <div class="col-md-4">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-header">Học sinh</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ count_student }}</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Giáo viên -->
+    <div class="col-md-4">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-header">Giáo viên</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ count_teacher }}</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lớp 10 -->
+    <div class="col-md-4">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-header">Lớp 10</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ count_grade10 }}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Lớp 11 -->
+    <div class="col-md-4">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-header">Lớp 11</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ count_grade11 }}</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Lớp 12 -->
+    <div class="col-md-4">
+        <div class="card text-white bg-danger mb-3">
+            <div class="card-header">Lớp 12</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ count_grade12 }}</h5>
+            </div>
+        </div>
+    </div>
+
+    <!-- Học kỳ và năm học -->
+    <div class="col-md-4">
+        <div class="card text-white bg-secondary mb-3">
+            <div class="card-header">Học kỳ - Năm học</div>
+            <div class="card-body">
+                <h5 class="card-title">{{ semester }} - {{ year }}</h5>
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <form method="post" action="/end_semester_action">
+        <button type="submit" class="btn btn-primary" >Kết thúc học kì</button>
+    </form>
+</div>
+{% else %}
+<form method="post" action="/admin_login" class="form-box login-form">
+    <div class="login-title">
+        <span>Đăng nhập</span>
+    </div>
+    <div class="form-inputs">
+        <div class="input-box">
+            <input type="text" class="inputs input-field form-control" id="username" name="username"
+                   placeholder="Nhập tên tài khoản" required>
+        </div>
+        <div class="input-box">
+            <input type="text" class="inputs input-field" id="password" name="password"
+                   placeholder="Nhập mật khẩu" required>
+        </div>
+        <div class="input-box">
+            <button class="inputs btn-login">Đăng nhập</button>
+        </div>
+    </div>
+</form>
+{% endif %}
+{% endblock %}
