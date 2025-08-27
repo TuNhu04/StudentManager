@@ -1,19 +1,22 @@
 # Student Management System
 
-Website quản lý học sinh được xây dựng bằng Python Flask và MySQL, giúp quản lý học sinh, điểm số, lớp học và môn học một cách hiệu quả.  
-Đây là bài tập lớn môn Công nghệ phần mềm tại Trường Đại học Mở TP. Hồ Chí Minh.
+A web-based application for managing students, developed with Python Flask and MySQL.  
+The system supports managing students, classes, subjects, grades, and statistics effectively.  
+This project was developed as part of the Software Engineering course at Ho Chi Minh City Open University.
 
-## Chức năng chính
-- Tiếp nhận học sinh: Nhân viên nhập thông tin hồ sơ học sinh mới.  
-- Điều chỉnh lớp: Thêm/xóa học sinh vào lớp, thay đổi sĩ số lớp.  
-- Nhập điểm: Giáo viên nhập điểm kiểm tra 15 phút, 1 tiết, và điểm tổng kết.  
-- Xuất điểm: Xuất bảng điểm của lớp theo môn học, năm học.  
-- Quản lý môn học: Admin thêm, sửa, xóa, tìm kiếm môn học.  
-- Thống kê báo cáo: Thống kê số lượng, tỷ lệ đạt của học sinh bằng biểu đồ trực quan (Chart.js).  
 
-## Công nghệ sử dụng
-- Ngôn ngữ: Python  
+## Features
+- Student Enrollment: Staff can add and manage new student records.  
+- Class Adjustment: Add or remove students from classes, update class size.  
+- Grade Management: Teachers can enter grades for quizzes, tests, and final results.  
+- Grade Export: Generate grade reports by class, subject, and academic year.  
+- Subject Management: Admin can add, edit, delete, and search subjects.  
+- Reports and Statistics: View and analyze student performance with interactive charts (Chart.js).  
+
+
+## Technologies
+- Language: Python  
 - Framework: Flask  
-- Cơ sở dữ liệu: MySQL  
+- Database: MySQL  
 - Frontend: HTML, CSS, Bootstrap  
-- Thư viện hỗ trợ: Chart.js  
+- Library: Chart.js  
